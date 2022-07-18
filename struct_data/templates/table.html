@@ -7,16 +7,18 @@
                 <td>Produto</td>
                 <td>Data de inserção na loja</td>
                 <td>Total de vendas</td>
+                <td></td>
                 
             </tr>
 
             {% for prod in data %}
             <tr>
+                <td><img src="{{prod.product_url__image}}" width="60px"></td>
                 <td></td>
-                <td></td>
-                <td>{{prod.product_url}}</td>
+                <td><a href="{{prod.product_url}}">{{prod.product_url}}</a></td>
                 <td>{{prod.product_url__created_at}}</td>
                 <td>{{prod.total_sales}}</td>
+                <td>{{prod.4}}</td>
             </tr>
             {% endfor %}
         </table>
