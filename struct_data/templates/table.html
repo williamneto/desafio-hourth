@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Produto</td>
+                <td>Data de inserção na loja</td>
+                <td>Total de vendas</td>
+                
+            </tr>
+
+            {% for prod in data %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{prod.product_url}}</td>
+                <td>{{prod.product_url__created_at}}</td>
+                <td>{{prod.total_sales}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

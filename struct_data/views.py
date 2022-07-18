@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime, timedelta
 
+from django.template import loader
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -106,5 +107,19 @@ def api(request):
         safe=False
     )
 
-    return JsonResponse(filtered, safe=False)
+def table(request):
+    response = requests.get(SOURCE_API)
+    data = response.json()
+    start_date = request.GET.get("start_date")
+    finish_date = request.GET.get("finish_date")
+
+    result = proccess_data(data, start_date, finish_date)
+
+    template = loader.get_template("table.html")
+    return HttpResponse(
+        template.render(
+            {"data": result},
+            request
+        )
+    )
     
